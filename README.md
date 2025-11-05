@@ -1,56 +1,202 @@
-# Sports Action Recognition using TensorFlow and Keras
+# 🏅 Sports Action Recognition using TensorFlow & Keras
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg) ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg) ![Keras](https://img.shields.io/badge/Keras-2.x-red.svg)
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)
+![Keras](https://img.shields.io/badge/Keras-Deep%20Learning-red)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-This project provides a complete pipeline for building, training, and evaluating a deep learning model for action recognition in sports videos. It uses a **Long-term Recurrent Convolutional Network (LRCN)** to effectively classify actions by learning both spatial and temporal features from video frames.
+## 🔍 Overview
 
----
+Sports action recognition is a challenging computer vision task focused on identifying different human actions from videos. This project implements a deep learning pipeline using **LRCN (Long-term Recurrent Convolutional Network)**—combining CNNs for spatial feature learning and LSTMs for temporal motion understanding.
 
-##  Project Overview
+The notebook provides:
 
-Action recognition is a challenging computer vision task that involves identifying different actions from video clips. This project implements an LRCN model, which combines the spatial feature extraction power of Convolutional Neural Networks (CNNs) with the sequence-modeling capability of Long Short-Term Memory (LSTM) networks. The model is trained to classify a variety of actions, making it a powerful tool for video analysis.
-
----
-
-##  Key Features
-
--   **End-to-End Implementation**: From data collection to prediction, the entire workflow is contained within the `Action_Recognition_Sports.ipynb` notebook.
--   **LRCN Architecture**: Implements the LRCN model using `TimeDistributed` CNN layers and `LSTM` layers in Keras for high-accuracy spatio-temporal learning.
--   **YouTube Video Compatibility**: Includes utility functions to download and process videos directly from YouTube links using `pafy` and `youtube-dl`.
--   **Data Preprocessing**: A complete pipeline for video-to-frame conversion, resizing, and normalization to prepare data for the model.
--   **Model Evaluation**: Includes code to visualize model accuracy and loss curves over epochs.
+- ✅ **Video → Frames → Training → Prediction pipeline**
+- ✅ **YouTube & local video support**
+- ✅ **Model training & evaluation tools**
 
 ---
 
-##  Model Architecture
+## 🚀 Key Features
 
-The model (`LRCN_model`) is built using the Keras Sequential API. Its architecture consists of two main parts:
-
-1.  **Spatial Feature Extractor (CNN)**: A `TimeDistributed` wrapper is applied to a series of `Conv2D`, `MaxPooling2D`, and `Dropout` layers. This allows the CNN to operate on each frame of the video sequence independently to extract spatial features like shapes, textures, and objects.
-2.  **Temporal Sequence Modeler (LSTM)**: The sequence of feature maps extracted by the CNN is then flattened and fed into an `LSTM` layer. The LSTM analyzes the temporal relationships between frames to understand the motion and dynamics of an action over time.
-3.  **Classifier**: Finally, a `Dense` layer with a `softmax` activation function classifies the sequence into the predefined action categories.
-
----
-
-##  Technologies & Libraries Used
-
-This project relies on the following Python libraries:
-
--   `TensorFlow` & `Keras`
--   `OpenCV-Python`
--   `MoviePy`
--   `pafy` & `youtube-dl`
--   `scikit-learn`
--   `Matplotlib`
--   `NumPy`
+| Feature | Description |
+|---------|-------------|
+| 🎥 **Video-based action classification** | Recognizes different sports actions |
+| 🧠 **LRCN Deep Learning Model** | CNN + LSTM for spatio-temporal learning |
+| 📦 **End-to-End Notebook** | Dataset preprocessing → Model → Prediction |
+| ⬇️ **YouTube Video Support** | Download training videos from YouTube |
+| 🛠 **Complete Pre-processing Pipeline** | Frame extraction, resizing, normalization |
+| 📈 **Model Evaluation** | Visualize accuracy & loss |
 
 ---
 
-##  How to Use
+## 🏗️ Model Architecture
 
-### 1. Setup
+### 📘 Concept
 
-**Clone the repository:**
+```
+Input Video Frames  
+        ↓
+[TimeDistributed Conv2D + MaxPool] × N  
+        ↓
+TimeDistributed Flatten  
+        ↓
+LSTM Layers  
+        ↓
+Dense + Softmax  
+        ↓
+Predicted Action
+```
+
+### ✨ Core Idea
+
+- **CNN layers** learn frame-wise spatial features
+- **LSTM** captures motion & temporal relationships
+- **Dense softmax** classifies final action
+
+---
+
+## 📦 Technologies & Libraries
+
+| Category | Tools |
+|----------|-------|
+| **Deep Learning** | TensorFlow, Keras |
+| **Video Processing** | OpenCV, MoviePy |
+| **Web Video Support** | pafy, youtube-dl |
+| **Utilities** | NumPy, scikit-learn |
+| **Visualization** | Matplotlib |
+
+---
+
+## 📂 Directory Structure
+
+```
+Sports-Recoganizer/
+│── data/
+│   ├── raw_videos/
+│   └── processed_frames/
+│── models/
+│   └── lrcn_model.h5
+│── notebooks/
+│   └── Action_Recognition_Sports.ipynb
+│── utils/
+│   ├── video_downloader.py
+│   ├── frame_extractor.py
+│   └── data_pipeline.py
+│── README.md
+└── requirements.txt
+```
+
+> **Note:** Folders may be auto-created during execution
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the Repository
+
 ```bash
-git clone https://github.com/Anurag-Amchi/Action-Recognition-Sports
-cd Action-Recognition-Sports
+git clone https://github.com/CoderYashVij/Sports-Recoganizer.git
+cd Sports-Recoganizer
+```
+
+### 2️⃣ Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3️⃣ Open Notebook
+
+```bash
+jupyter notebook
+```
+
+Then open: `notebooks/Action_Recognition_Sports.ipynb`
+
+---
+
+## ▶️ Run the Pipeline
+
+### ✅ Training
+
+1. Load dataset or download videos
+2. Notebook auto-processes frames
+3. Trains LRCN model on sequences
+
+### ✅ Prediction Example
+
+```python
+predict_on_video("example.mp4")
+```
+
+---
+
+## 📊 Model Performance
+
+- ✅ **Spatial + Temporal** deep learning
+- ✅ Works on **sports motion videos**
+- ✅ Accuracy & loss curves available in notebook
+- ✅ Model improves with more labeled sports video data
+
+---
+
+## 🔧 Future Improvements
+
+- [ ] Real-time webcam prediction
+- [ ] Streamlit/Gradio UI dashboard
+- [ ] Replace LRCN with **I3D / ConvLSTM / ViT-based** architecture
+- [ ] Fine-tuning using **Sports-1M / Kinetics** dataset
+- [ ] Lightweight **TFLite** mobile deployment
+
+---
+
+## 🤝 Contribution Guidelines
+
+Contributions are welcome! 🎉
+
+**Fork → Create Branch → Commit → Push → Pull Request**
+
+1. Fork this repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 👨‍💻 Author
+
+**Yash Vij**
+
+- 🔗 GitHub: [@CoderYashVij](https://github.com/CoderYashVij)
+
+---
+
+## ⭐ Support
+
+If you find this useful, please **⭐ the repo** — it motivates development & helps others find it!
+
+---
+
+### 📸 Screenshots
+
+> Add screenshots of your model training, predictions, or UI here!
+
+---
+
+### 🙏 Acknowledgments
+
+- TensorFlow & Keras teams for amazing deep learning frameworks
+- OpenCV community for video processing tools
+- Research papers on LRCN and action recognition
+
+---
+
+**Happy Coding! 🚀**
