@@ -1,0 +1,8 @@
+tensorflow
+opencv-python
+moviepy
+pafy
+youtube-dl
+scikit-learn
+matplotlib
+numpy
